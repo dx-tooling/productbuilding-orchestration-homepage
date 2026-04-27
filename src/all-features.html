@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+
+<head>
+    <title>All features &mdash; ProductBuilder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Complete feature catalogue for ProductBuilder: Slack PM, coding agent, PR previews, GitHub integration, dashboard, and infrastructure.">
+
+    <include src="partials/theme-fouc-guard.html"></include>
+</head>
+
+<body class="h-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-x-hidden">
+
+<div class="container mx-auto px-4 py-8 max-w-5xl">
+
+    <header class="mb-12 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+                <a href="/" class="text-xl font-bold text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">ProductBuilder</a>
+                <span class="text-xs text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">by <a href="https://dx-tooling.org" class="text-inherit no-underline hover:no-underline">DX&middot;Tooling</a></span>
+            </div>
+            <nav class="hidden sm:flex items-center gap-4 text-sm">
+                <a href="index.html#model" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Why?</a>
+                <a href="index.html#pillars" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Pillars</a>
+                <a href="index.html#how" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">How it works</a>
+                <a href="features.html" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Highlights</a>
+                <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">GitHub</a>
+            </nav>
+        </div>
+        <div data-controller="theme">
+            <button
+                data-theme-target="toggleButton"
+                data-action="click->theme#toggle"
+                aria-label="Toggle theme"
+                class="p-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 dark:focus:ring-offset-gray-900 cursor-pointer transition-colors duration-200"
+            >
+                <svg data-theme-target="sunIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                </svg>
+                <svg data-theme-target="moonIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <section class="mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">All features</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            A growing catalogue of what ProductBuilder can do, with the commits that introduced each capability.
+        </p>
+    </section>
+
+    <nav class="mb-12 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+        <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Jump to section</h2>
+        <div id="features-quick-nav-links" class="flex flex-wrap gap-2"></div>
+    </nav>
+
+    <div id="features-sections" class="features-sections"></div>
+
+    <!-- FEATURES_DATA -->
+
+    <section class="mb-16 py-12 bg-gradient-to-br from-emerald-600 to-teal-700 dark:from-emerald-800 dark:to-teal-900 rounded-lg text-center text-white">
+        <div class="container mx-auto px-6 max-w-xl">
+            <h2 class="text-3xl font-bold mb-4">Ready to deploy your own?</h2>
+            <p class="mb-6 text-emerald-100 dark:text-emerald-200">ProductBuilder is open source. Point it at your Slack and target repos, and the PM does the rest.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-emerald-700 bg-white rounded-md shadow-md hover:bg-emerald-50 transition">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                    View on GitHub
+                </a>
+                <a href="/" class="inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-white border-2 border-white rounded-md hover:bg-white/10 transition">
+                    Back to home
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer class="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 dark:text-gray-400 text-sm">
+        <p data-controller="copyright">
+            &copy; <span data-copyright-target="year">2026</span> <a href="https://manuel.kiessling.net" class="hover:text-emerald-600 dark:hover:text-emerald-400">Manuel Kie&szlig;ling</a>. Part of <a href="https://dx-tooling.org" class="hover:text-emerald-600 dark:hover:text-emerald-400">DX&middot;Tooling</a>.
+        </p>
+        <nav class="flex gap-6">
+            <a href="index.html" class="hover:text-emerald-600 dark:hover:text-emerald-400">Home</a>
+            <a href="features.html" class="hover:text-emerald-600 dark:hover:text-emerald-400">Highlights</a>
+            <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="hover:text-emerald-600 dark:hover:text-emerald-400">GitHub</a>
+        </nav>
+    </div>
+</footer>
+
+</body>
+
+</html>

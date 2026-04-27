@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+    .prose :where(code):not(:where([class~="not-prose"] *)):not(:where(pre code)) {
+        display: inline-block;
+        padding: 0.15em 0.45em;
+        border-radius: 0.5rem;
+        background-color: rgba(15, 23, 42, 0.08);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.02);
+        font-size: 0.95em;
+        line-height: 1.4;
+    }
+
+    .dark .prose :where(code):not(:where([class~="not-prose"] *)):not(:where(pre code)) {
+        background-color: rgba(203, 213, 225, 0.12);
+        border-color: rgba(203, 213, 225, 0.16);
+        box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .prose :where(code):not(:where([class~="not-prose"] *))::before,
+    .prose :where(code):not(:where([class~="not-prose"] *))::after {
+        content: none !important;
+    }
+
+    /* Screenshot / content images: constrained width, rounded corners, subtle shadow */
+    .prose :where(p:has(> img)) {
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .prose :where(img) {
+        width: 100%;
+        border-radius: 0.75rem;
+        box-shadow:
+            0 4px 6px -1px rgb(0 0 0 / 0.1),
+            0 2px 4px -2px rgb(0 0 0 / 0.1);
+        border: 1px solid rgb(229 231 235);
+    }
+    .dark .prose :where(img) {
+        border-color: rgb(55 65 81);
+    }
+}
