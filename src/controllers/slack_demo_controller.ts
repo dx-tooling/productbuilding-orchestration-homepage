@@ -382,10 +382,10 @@ export default class extends Controller {
             if (this.hasTypingAvatarTarget) {
                 this.typingAvatarTarget.classList.remove("from-emerald-500", "to-teal-600", "bg-gradient-to-br");
                 this.typingAvatarTarget.classList.add("bg-blue-500");
-                this.typingAvatarTarget.textContent = "MK";
+                this.typingAvatarTarget.textContent = "A";
             }
             if (this.hasTypingLabelTarget) {
-                this.typingLabelTarget.textContent = "Manuel is typing…";
+                this.typingLabelTarget.textContent = "Alex is typing…";
             }
         } else {
             if (this.hasTypingAvatarTarget) {
