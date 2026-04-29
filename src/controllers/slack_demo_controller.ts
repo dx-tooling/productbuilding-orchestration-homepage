@@ -4,17 +4,37 @@ import { Controller } from "@hotwired/stimulus";
  * Slack Demo Controller
  *
  * Plays a scripted Slack-style conversation message-by-message when the
- * demo scrolls into view. Each message carries its own pacing via data
- * attributes:
- *   - data-from="user|bot"   — controls the typing-indicator avatar/label
- *   - data-typing-ms="1500"  — how long to show "is typing…" before reveal
- *   - data-pause-ms="800"    — how long to wait after reveal before the next message
+ * demo scrolls into view.
+ *
+ * Bot messages: a "ProductBuilder is typing…" indicator shows for
+ * data-typing-ms, then the message reveals.
+ *
+ * User messages: the message is typed letter-by-letter into the
+ * composer input (taken from data-input-text), then "submitted" — the
+ * composer clears and the message appears in the thread. This makes
+ * the user side of the conversation feel as live as the bot side.
+ *
+ * Common attributes on each [data-slack-demo-target="message"]:
+ *   - data-from="user|bot"
+ *   - data-typing-ms="1500"   (bot only — duration of typing indicator)
+ *   - data-pause-ms="800"     (delay after reveal before next message)
+ *   - data-input-text="..."   (user only — text typed into the composer)
  *
  * Honors prefers-reduced-motion by revealing every message at once with
- * no typing indicators.
+ * no typing indicators or composer animation.
  */
 export default class extends Controller {
-    static targets = ["list", "message", "typing", "typingAvatar", "typingLabel", "replay"];
+    static targets = [
+        "list",
+        "message",
+        "typing",
+        "typingAvatar",
+        "typingLabel",
+        "replay",
+        "composerPlaceholder",
+        "composerTyped",
+        "composerCursor",
+    ];
 
     declare readonly listTarget: HTMLElement;
     declare readonly messageTargets: HTMLElement[];
@@ -26,6 +46,12 @@ export default class extends Controller {
     declare readonly hasTypingLabelTarget: boolean;
     declare readonly replayTarget: HTMLElement;
     declare readonly hasReplayTarget: boolean;
+    declare readonly composerPlaceholderTarget: HTMLElement;
+    declare readonly hasComposerPlaceholderTarget: boolean;
+    declare readonly composerTypedTarget: HTMLElement;
+    declare readonly hasComposerTypedTarget: boolean;
+    declare readonly composerCursorTarget: HTMLElement;
+    declare readonly hasComposerCursorTarget: boolean;
 
     private observer: IntersectionObserver | null = null;
     private played = false;
@@ -81,8 +107,24 @@ export default class extends Controller {
             const typingMs = Number(message.dataset.typingMs ?? "0");
             const pauseMs = Number(message.dataset.pauseMs ?? "600");
             const from = (message.dataset.from ?? "bot") as "user" | "bot";
+            const inputText = message.dataset.inputText ?? "";
 
-            if (typingMs > 0 && this.hasTypingTarget) {
+            if (from === "user" && inputText.length > 0) {
+                // User turn: type the message letter-by-letter into the composer,
+                // pause briefly (as if reading what they typed), then "submit".
+                await this.typeIntoComposer(inputText);
+                if (this.cancelled) {
+                    this.deactivateComposer();
+                    return;
+                }
+                await this.sleep(350);
+                if (this.cancelled) {
+                    this.deactivateComposer();
+                    return;
+                }
+                this.deactivateComposer();
+            } else if (typingMs > 0 && this.hasTypingTarget) {
+                // Bot turn: show the "is typing…" indicator for the configured duration.
                 this.showTyping(from);
                 await this.sleep(typingMs);
                 if (this.cancelled) {
@@ -102,11 +144,58 @@ export default class extends Controller {
         }
     }
 
+    private async typeIntoComposer(text: string) {
+        if (!this.hasComposerTypedTarget) return;
+        this.activateComposer();
+        // Split by code point so emoji + surrogate pairs don't get cut in half.
+        const chars = Array.from(text);
+        const baseDelay = 28;
+        const jitter = 22;
+        let buffer = "";
+        for (const ch of chars) {
+            if (this.cancelled) return;
+            buffer += ch;
+            this.composerTypedTarget.textContent = buffer;
+            let delay = baseDelay + Math.random() * jitter;
+            if (ch === "." || ch === "?" || ch === "!") delay += 140;
+            else if (ch === "," || ch === ";" || ch === ":") delay += 70;
+            else if (ch === " ") delay += 10;
+            await this.sleep(delay);
+        }
+    }
+
+    private activateComposer() {
+        if (this.hasComposerPlaceholderTarget) {
+            this.composerPlaceholderTarget.classList.add("hidden");
+        }
+        if (this.hasComposerTypedTarget) {
+            this.composerTypedTarget.textContent = "";
+            this.composerTypedTarget.classList.remove("hidden");
+        }
+        if (this.hasComposerCursorTarget) {
+            this.composerCursorTarget.classList.remove("hidden");
+        }
+    }
+
+    private deactivateComposer() {
+        if (this.hasComposerTypedTarget) {
+            this.composerTypedTarget.textContent = "";
+            this.composerTypedTarget.classList.add("hidden");
+        }
+        if (this.hasComposerCursorTarget) {
+            this.composerCursorTarget.classList.add("hidden");
+        }
+        if (this.hasComposerPlaceholderTarget) {
+            this.composerPlaceholderTarget.classList.remove("hidden");
+        }
+    }
+
     private revealAll() {
         this.messageTargets.forEach((m) => {
             m.classList.remove("hidden", "opacity-0", "translate-y-2");
         });
         this.hideTyping();
+        this.deactivateComposer();
     }
 
     private resetMessages() {
@@ -114,6 +203,7 @@ export default class extends Controller {
             m.classList.add("hidden", "opacity-0", "translate-y-2");
         });
         this.hideTyping();
+        this.deactivateComposer();
         this.listTarget.scrollTop = 0;
     }
 

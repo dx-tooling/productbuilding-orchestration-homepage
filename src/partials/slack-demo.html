@@ -31,6 +31,7 @@
                  data-from="user"
                  data-typing-ms="0"
                  data-pause-ms="900"
+                 data-input-text="@ProductBuilder I'd like to add a light/dark theme switch to the page."
                  class="hidden opacity-0 translate-y-2 transition-all duration-300 ease-out flex gap-3 px-4 py-2 hover:bg-gray-50 dark:hover:bg-white/5">
                 <div class="shrink-0 w-9 h-9 rounded bg-blue-500 flex items-center justify-center text-white font-bold text-xs">MK</div>
                 <div class="flex-1 min-w-0">
@@ -73,6 +74,7 @@
                  data-from="user"
                  data-typing-ms="0"
                  data-pause-ms="900"
+                 data-input-text="Looks right. Could you have an implementation plan put together first?"
                  class="hidden opacity-0 translate-y-2 transition-all duration-300 ease-out flex gap-3 px-4 py-2 hover:bg-gray-50 dark:hover:bg-white/5">
                 <div class="shrink-0 w-9 h-9 rounded bg-blue-500 flex items-center justify-center text-white font-bold text-xs">MK</div>
                 <div class="flex-1 min-w-0">
@@ -138,6 +140,7 @@
                  data-from="user"
                  data-typing-ms="0"
                  data-pause-ms="900"
+                 data-input-text="Yes, please go ahead."
                  class="hidden opacity-0 translate-y-2 transition-all duration-300 ease-out flex gap-3 px-4 py-2 hover:bg-gray-50 dark:hover:bg-white/5">
                 <div class="shrink-0 w-9 h-9 rounded bg-blue-500 flex items-center justify-center text-white font-bold text-xs">MK</div>
                 <div class="flex-1 min-w-0">
@@ -233,6 +236,7 @@
                  data-from="user"
                  data-typing-ms="0"
                  data-pause-ms="600"
+                 data-input-text="Tested it on a few screens — works great in both modes. Ready for review whenever a dev has a moment. 🚀"
                  class="hidden opacity-0 translate-y-2 transition-all duration-300 ease-out flex gap-3 px-4 py-2 hover:bg-gray-50 dark:hover:bg-white/5">
                 <div class="shrink-0 w-9 h-9 rounded bg-blue-500 flex items-center justify-center text-white font-bold text-xs">MK</div>
                 <div class="flex-1 min-w-0">
@@ -262,10 +266,17 @@
             </div>
         </div>
 
-        <!-- Composer (decorative — not interactive) -->
+        <!-- Composer (decorative — animated by the controller) -->
         <div class="border-t border-gray-200 dark:border-gray-700 px-4 py-3 bg-white dark:bg-[#1a1d21]">
-            <div class="flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 text-sm text-gray-400 dark:text-gray-500 bg-white dark:bg-[#222529]">
-                <span class="select-none">Message #productbuilding-acme-directory</span>
+            <div data-slack-demo-target="composer"
+                 class="flex items-center gap-1 px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 text-sm bg-white dark:bg-[#222529] min-h-[2.25rem]">
+                <span data-slack-demo-target="composerPlaceholder"
+                      class="select-none text-gray-400 dark:text-gray-500">Message #productbuilding-acme-directory</span>
+                <span data-slack-demo-target="composerTyped"
+                      class="hidden text-gray-900 dark:text-gray-100 whitespace-pre-wrap break-words"></span>
+                <span data-slack-demo-target="composerCursor"
+                      aria-hidden="true"
+                      class="hidden inline-block w-0.5 h-4 bg-gray-800 dark:bg-gray-200 align-text-bottom slack-demo-caret"></span>
             </div>
             <div class="flex items-center justify-between mt-2">
                 <div class="text-[11px] text-gray-500 dark:text-gray-400">Demo conversation — replays from the top.</div>
