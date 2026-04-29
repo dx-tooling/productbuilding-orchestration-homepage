@@ -1,0 +1,259 @@
+{
+    "commitBaseUrl": "https://github.com/dx-tooling/productbuilding-orchestration/commit/",
+    "categories": [
+        {
+            "id": "slack-pm",
+            "title": "Slack-Projektmanager",
+            "quickNavTitle": "Slack-PM",
+            "inQuickNav": true,
+            "iconBgColor": "bg-rose-100 dark:bg-rose-900/40",
+            "iconColor": "text-rose-600 dark:text-rose-300",
+            "iconSvg": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155\" />",
+            "images": []
+        },
+        {
+            "id": "coding-agent",
+            "title": "Coding-Agent",
+            "quickNavTitle": "Coding-Agent",
+            "inQuickNav": true,
+            "iconBgColor": "bg-indigo-100 dark:bg-indigo-900/40",
+            "iconColor": "text-indigo-600 dark:text-indigo-300",
+            "iconSvg": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5\" />",
+            "images": []
+        },
+        {
+            "id": "pr-previews",
+            "title": "PR-Previews",
+            "quickNavTitle": "PR-Previews",
+            "inQuickNav": true,
+            "iconBgColor": "bg-amber-100 dark:bg-amber-900/40",
+            "iconColor": "text-amber-600 dark:text-amber-300",
+            "iconSvg": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z\" /><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M15 12a3 3 0 11-6 0 3 3 0 016 0z\" />",
+            "images": []
+        },
+        {
+            "id": "github-integration",
+            "title": "GitHub-Integration",
+            "quickNavTitle": "GitHub",
+            "inQuickNav": true,
+            "iconBgColor": "bg-purple-100 dark:bg-purple-900/40",
+            "iconColor": "text-purple-600 dark:text-purple-300",
+            "iconSvg": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z\" />",
+            "images": []
+        },
+        {
+            "id": "infrastructure",
+            "title": "Infrastruktur & Betrieb",
+            "quickNavTitle": "Infrastruktur",
+            "inQuickNav": true,
+            "iconBgColor": "bg-blue-100 dark:bg-blue-900/40",
+            "iconColor": "text-blue-600 dark:text-blue-300",
+            "iconSvg": "<path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z\" />",
+            "images": []
+        }
+    ],
+    "commits": {
+        "30afb65": {
+            "date": "2026-04-14",
+            "features": {
+                "Lebenszyklus-Tracking pro Workstream": {
+                    "description": "Jede Konversation trägt eine Phase (Intake, offen, in Bearbeitung, Review, Überarbeitung, fertig, abgebrochen). Der Router nutzt die aktuelle Phase, um die Absicht eindeutig zu deuten – „sieht gut aus“ heißt während des Intakes etwas anderes als nach einer fertigen Preview.",
+                    "category": "slack-pm"
+                }
+            }
+        },
+        "1cd5128": {
+            "date": "2026-04-13",
+            "features": {
+                "Einheitliche Feature-Kontextzusammenstellung": {
+                    "description": "Ein einziger Kontext-Assembler fasst Issue, PR, CI-Status und Preview-Zustand für den aktuellen Workstream zusammen und liefert sie sowohl dem Agenten des PMs als auch dem Slack-Notifier. Dieselbe stimmige Momentaufnahme treibt jede ausgehende Nachricht.",
+                    "category": "slack-pm"
+                }
+            }
+        },
+        "78d8f3a": {
+            "date": "2026-04-14",
+            "features": {
+                "LLM-gestützte konversationelle Benachrichtigungen": {
+                    "description": "Automatische Slack-Updates zu PR-Status und CI-Ereignissen werden von einem LLM-Spezialisten formuliert statt aus Templates zusammengesetzt – so bleibt der Tonfall konsistent mit den übrigen Nachrichten des PMs.",
+                    "category": "slack-pm"
+                }
+            }
+        },
+        "25c2a71": {
+            "date": "2026-04-15",
+            "features": {
+                "Erzählte Preview-Ereignisse": {
+                    "description": "„Preview bereit“- und „Preview fehlgeschlagen“-Ereignisse laufen durch den Event-Narrator-Spezialisten und werden zu natürlich klingenden Slack-Nachrichten statt zu maschinenformatierten Statuszeilen.",
+                    "category": "slack-pm"
+                }
+            }
+        },
+        "0775559": {
+            "date": "2026-04-16",
+            "features": {
+                "Sprachunterstützung pro Ziel-Repo": {
+                    "description": "Durchgängige i18n: Jedes Ziel-Repo kann konfigurieren, in welcher Sprache der PM spricht. Issues, PR-Kommentare und Slack-Nachrichten übernehmen die Sprache des Ziels.",
+                    "category": "slack-pm"
+                }
+            }
+        },
+        "a36785b": {
+            "date": "2026-04-15",
+            "features": {
+                "Delegation wandert zum PR, sobald er existiert": {
+                    "description": "Während der ersten Überarbeitung delegiert der PM am Issue; sobald ein PR geöffnet wurde, richten sich weitere Anweisungen direkt an den PR. Macht den alten „push to existing branch“-Workaround überflüssig und hält die Iteration auf einem einzigen lebendigen Artefakt.",
+                    "category": "coding-agent"
+                }
+            }
+        },
+        "a9a9697": {
+            "date": "2026-02-28",
+            "features": {
+                "Vermeidung doppelter PRs beim Feedback-Relay": {
+                    "description": "Beim Weitergeben von Feedback weist der Delegator OpenCode an, in den existierenden Branch zu pushen, statt einen parallelen PR zu öffnen – ein lebendiger PR pro Workstream, nicht fünf.",
+                    "category": "coding-agent"
+                }
+            }
+        },
+        "8fa9d01": {
+            "date": "2026-04-17",
+            "features": {
+                "Scope-Schutz für den Delegator": {
+                    "description": "Der Delegator-Prompt verbietet OpenCode jetzt, Branches oder PRs anzulegen – das übernimmt das CI-Framework. So bleibt jeder Teil des Stacks für genau eine Aufgabe zuständig.",
+                    "category": "coding-agent"
+                }
+            }
+        },
+        "d8dc9bc": {
+            "date": "2026-03-19",
+            "features": {
+                "Laufende Deployments bei neuen Commits abbrechen": {
+                    "description": "Landet während eines noch laufenden Deploys ein neuer Commit auf dem PR, wird der laufende Deploy abgebrochen, damit die Preview stets den neuesten Code zeigt.",
+                    "category": "pr-previews"
+                }
+            }
+        },
+        "15647a2": {
+            "date": "2026-03-19",
+            "features": {
+                "Alte Bot-Kommentare bei neuen Deployments aufräumen": {
+                    "description": "Bei einem neuen Deploy werden vorherige Fortschrittskommentare entfernt, damit die PR-Konversation auf den aktuellen Stand fokussiert bleibt – statt auf eine Historie veralteter Status-Updates.",
+                    "category": "pr-previews"
+                }
+            }
+        },
+        "3b062cc": {
+            "date": "2026-03-12",
+            "features": {
+                "Slack-Benachrichtigungen für den Preview-Status": {
+                    "description": "Build-, Deploy- und Bereit-Ereignisse einer Preview landen im ursprünglichen Slack-Thread, sodass die anfragende Person dort erfährt, was los ist, wo sie auch gefragt hat.",
+                    "category": "pr-previews"
+                }
+            }
+        },
+        "10df409": {
+            "date": "2026-03-08",
+            "features": {
+                "Auf gültiges TLS-Zertifikat warten, bevor „bereit“ gemeldet wird": {
+                    "description": "Eine Preview wird erst als „bereit“ angekündigt, wenn das Let’s-Encrypt-Zertifikat für ihre Subdomain auflöst. Reviewer landen nie auf einer Browser-Warnung.",
+                    "category": "pr-previews"
+                }
+            }
+        },
+        "bac01d6": {
+            "date": "2026-03-08",
+            "features": {
+                "Fortschrittskommentare im Checkbox-Stil": {
+                    "description": "Der Fortschritt eines Deploys wird als live aktualisierte Checkliste am PR dargestellt – nicht als Strom neuer Kommentare. Weniger Benachrichtigungen, klarerer Zustand.",
+                    "category": "pr-previews"
+                }
+            }
+        },
+        "b3844ff": {
+            "date": "2026-03-12",
+            "features": {
+                "Bidirektionale Slack-GitHub-Integration": {
+                    "description": "Eine Top-Level-@Erwähnung in einem Produkt-Slack-Channel kann ein GitHub-Issue erzeugen; GitHub-Ereignisse fließen zurück in denselben Slack-Thread. Ein Workstream, ein Thread, beide Seiten.",
+                    "category": "github-integration"
+                }
+            }
+        },
+        "fe8fe2b": {
+            "date": "2026-03-12",
+            "features": {
+                "„via Slack“-Backlink in erstellten Issues": {
+                    "description": "Jedes aus Slack erstellte Issue erhält einen Link zurück zur ursprünglichen Nachricht, damit Entwickler die vollständige Konversation sehen, die zum Ticket geführt hat.",
+                    "category": "github-integration"
+                }
+            }
+        },
+        "6724251": {
+            "date": "2026-03-12",
+            "features": {
+                "Top-Level-@Erwähnung erzeugt ein Issue": {
+                    "description": "Wenn jemand den PM in einem Produkt-Channel ohne Thread @erwähnt, behandelt der PM das als Intake und legt ein neues GitHub-Issue an, statt nach einem bestehenden Workstream zu suchen.",
+                    "category": "github-integration"
+                }
+            }
+        },
+        "e6a9f8a": {
+            "date": "2026-03-25",
+            "features": {
+                "Actions-API für den CI-Status": {
+                    "description": "Der CI-Status wird über die GitHub-Actions-API abgefragt statt über die ältere Checks-API. Das ergibt eine sauberere Sicht auf einzelne Workflow-Ergebnisse und weniger Sonderfälle bei feingranularen PATs.",
+                    "category": "github-integration"
+                }
+            }
+        },
+        "59544af": {
+            "date": "2026-03-12",
+            "features": {
+                "Terraform-Modul verkabelt GitHub-Webhooks": {
+                    "description": "Das wiederverwendbare Infrastruktur-Modul richtet beim Provisionieren der EC2 alle GitHub-Webhooks ein, die der Orchestrator braucht – kein manuelles Webhook-Setup pro Repo.",
+                    "category": "infrastructure"
+                }
+            }
+        },
+        "ec7efbd": {
+            "date": "2026-03-28",
+            "features": {
+                "Selbstheilende Reconciliation": {
+                    "description": "Beim Start gleicht der Orchestrator seinen SQLite-Zustand mit Docker und GitHub ab, sodass halb abgeräumte Previews oder im Offline-Zustand geschlossene PRs automatisch nachgezogen werden.",
+                    "category": "infrastructure"
+                }
+            }
+        }
+    },
+    "categoryFeatureOrder": {
+        "slack-pm": [
+            "Lebenszyklus-Tracking pro Workstream",
+            "Einheitliche Feature-Kontextzusammenstellung",
+            "LLM-gestützte konversationelle Benachrichtigungen",
+            "Erzählte Preview-Ereignisse",
+            "Sprachunterstützung pro Ziel-Repo"
+        ],
+        "coding-agent": [
+            "Delegation wandert zum PR, sobald er existiert",
+            "Vermeidung doppelter PRs beim Feedback-Relay",
+            "Scope-Schutz für den Delegator"
+        ],
+        "pr-previews": [
+            "Laufende Deployments bei neuen Commits abbrechen",
+            "Alte Bot-Kommentare bei neuen Deployments aufräumen",
+            "Slack-Benachrichtigungen für den Preview-Status",
+            "Auf gültiges TLS-Zertifikat warten, bevor „bereit“ gemeldet wird",
+            "Fortschrittskommentare im Checkbox-Stil"
+        ],
+        "github-integration": [
+            "Bidirektionale Slack-GitHub-Integration",
+            "Top-Level-@Erwähnung erzeugt ein Issue",
+            "„via Slack“-Backlink in erstellten Issues",
+            "Actions-API für den CI-Status"
+        ],
+        "infrastructure": [
+            "Terraform-Modul verkabelt GitHub-Webhooks",
+            "Selbstheilende Reconciliation"
+        ]
+    }
+}

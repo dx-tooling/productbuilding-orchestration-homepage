@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full scroll-smooth">
+
+<head>
+    <title>Highlights &mdash; ProductBuilder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Highlights von ProductBuilder, gruppiert nach den drei Säulen: Slack-Projektmanager-Agent, Coding-Agent und automatische PR-Previews.">
+
+    <include src="partials/theme-fouc-guard.html"></include>
+</head>
+
+<body class="h-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-x-hidden">
+
+<div class="container mx-auto px-4 py-8 max-w-5xl">
+
+    <header class="mb-12 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+                <a href="/" class="text-xl font-bold text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">ProductBuilder</a>
+                <span class="text-xs text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">von <a href="https://dx-tooling.org" class="text-inherit no-underline hover:no-underline">DX&middot;Tooling</a></span>
+            </div>
+            <nav class="hidden sm:flex items-center gap-4 text-sm">
+                <a href="index.html#model" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Warum?</a>
+                <a href="index.html#pillars" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Säulen</a>
+                <a href="index.html#how" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">So funktioniert&rsquo;s</a>
+                <span class="text-emerald-600 dark:text-emerald-400 font-medium">Highlights</span>
+                <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">GitHub</a>
+            </nav>
+        </div>
+        <div data-controller="theme">
+            <button
+                data-theme-target="toggleButton"
+                data-action="click->theme#toggle"
+                aria-label="Farbschema umschalten"
+                class="p-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 dark:focus:ring-offset-gray-900 cursor-pointer transition-colors duration-200"
+            >
+                <svg data-theme-target="sunIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                </svg>
+                <svg data-theme-target="moonIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-gray-100">
+            Highlights, nach Säulen sortiert
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Jede Fähigkeit gehört zu einer der drei Säulen, die zusammen ausgeliefert werden: dem Slack-Projektmanager-Agenten, dem Coding-Agenten und den automatischen PR-Previews.
+        </p>
+    </section>
+
+    <!-- Pillar 1: Slack PM -->
+    <section class="mb-16" id="slack-pm">
+        <div class="flex items-center gap-3 mb-8 pb-3 border-b border-rose-200 dark:border-rose-900/40">
+            <div class="w-10 h-10 bg-rose-100 dark:bg-rose-900/40 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-rose-600 dark:text-rose-300" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Der Slack-Projektmanager</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Intent-Routing</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Ein LLM-gesteuerter Router klassifiziert jede Anfrage und reicht sie an den richtigen Spezialisten weiter: Issue-Ersteller, Delegator, Researcher, Kommentator, Closer oder Event-Erzähler. Jeder Spezialist hat einen knappen Prompt und ein eng zugeschnittenes Werkzeug-Set, was das Verhalten vorhersagbar hält.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Rückfragen vor Aktion</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Wenn eine Anfrage vage ist, hakt der PM mit konkreten Fragen nach, statt zu raten. Erst wenn der Umfang klar ist, legt er ein Issue an oder delegiert die Arbeit &mdash; das heißt, Entwickler bekommen am Ende gut formulierte Aufgaben statt Einzeiler-Tickets.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Phasen-Tracking pro Workstream</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Jede Konversation trägt eine Lebenszyklus-Phase &mdash; <em>Intake</em>, <em>offen</em>, <em>in Bearbeitung</em>, <em>Review</em>, <em>Überarbeitung</em>, <em>fertig</em>, <em>abgebrochen</em>. Derselbe Satz (&bdquo;sieht gut aus&ldquo;) heißt während des Intakes etwas anderes als nach einer fertigen Preview; die Phase erlaubt dem Router, das eindeutig zu deuten.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Zwei-Spuren-Benachrichtigungspuffer</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Statusmeldungen (CI grün, Preview bereit, PR geschlossen) laufen über eine „latest-wins“-Spur; menschliche Kommentare über eine Spur, die alles anhängt. Das Resultat: Der Thread bleibt auch unter einer Welle von Ereignissen lesbar, und nichts, was jemand geschrieben hat, geht still verloren.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillar 2: Coding Agent -->
+    <section class="mb-16" id="coding-agent">
+        <div class="flex items-center gap-3 mb-8 pb-3 border-b border-indigo-200 dark:border-indigo-900/40">
+            <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/40 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Der Coding-Agent</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Delegation an OpenCode</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Sobald der PM genug Scope hat, übergibt er die Arbeit an den Coding-Agenten, indem er eine <code class="text-xs bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">/opencode</code>-Anweisung postet. Der Agent liest das Issue, arbeitet in einem Branch und öffnet den PR &mdash; ohne dass ein Entwickler das Issue zuerst aufgreifen muss.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Issue-Erstellung mit Duplikat-Erkennung</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Bevor ein neues Issue angelegt wird, durchsucht der PM die bestehenden offenen Issues, um kein Duplikat zu erzeugen. Findet er eine nahe Übereinstimmung, verknüpft er die neue Konversation mit der bestehenden Arbeit, statt eine parallele Spur aufzumachen.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">PR-Erstellung über das CI-Framework</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Ein kleiner GitHub-Actions-Workflow im Ziel-Repo lauscht auf den <code class="text-xs bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">/opencode</code>-Kommentar des PMs, legt einen Branch an, lässt den Agenten laufen und öffnet den PR, sobald er fertig ist. Aus Slack-Sicht sieht das einfach so aus, als wäre der PR aufgetaucht.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Feedback-Relay</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Wenn der Reviewer in Slack Änderungen erbittet, übersetzt der PM das Feedback in eine konkrete Anweisung an den Coding-Agenten und postet sie zurück am PR. Der Agent iteriert; die Preview aktualisiert sich; der Zyklus läuft, bis der Reviewer zufrieden ist.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillar 3: PR Previews -->
+    <section class="mb-16" id="pr-previews">
+        <div class="flex items-center gap-3 mb-8 pb-3 border-b border-amber-200 dark:border-amber-900/40">
+            <div class="w-10 h-10 bg-amber-100 dark:bg-amber-900/40 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber-600 dark:text-amber-300" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">PR-Previews</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Stabile Preview-URLs</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Jeder PR wird unter <code class="text-xs bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">pr-{number}-preview.{domain}</code> deployed. Die URL bleibt für die gesamte Lebensdauer des PRs gleich, sodass dieselbe Slack-Nachricht Reviewer auch nach fünf Änderungsrunden auf die neueste Version zeigt.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Voller Lebenszyklus</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Previews durchlaufen <em>pending &rarr; building &rarr; deploying &rarr; ready</em> bei neuen Commits und werden <em>gelöscht</em>, sobald der PR geschlossen wird. Container, Volumes und Routing-Labels werden automatisch aufgeräumt &mdash; keine langlebigen Preview-Friedhöfe.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Preview-Vertrag pro Repo</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Jedes Ziel-Repo deklariert über <code class="text-xs bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">.productbuilding/preview/config.yml</code>, wie seine Previews laufen sollen: Compose-Services, Health Checks, Datenbank-Migrationen, Post-Deploy-Befehle. Der Orchestrator liest den Vertrag; das Repo bleibt für seine eigene Deploy-Form verantwortlich.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Selbstheilende Reconciliation</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Beim Start gleicht der Orchestrator seinen SQLite-Zustand mit Docker und GitHub ab. Wurde eine Preview nur halb abgeräumt oder ein PR geschlossen, während das System offline war, holt er das ohne manuelles Eingreifen nach.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cross-cutting -->
+    <section class="mb-16" id="cross-cutting">
+        <div class="flex items-center gap-3 mb-8 pb-3 border-b border-emerald-200 dark:border-emerald-900/40">
+            <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-300" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" /></svg>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Unter allen drei</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Multi-Provider-LLM-Unterstützung</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Der PM läuft standardmäßig mit Claude von Anthropic und nutzt optional einen OpenAI-kompatiblen Fallback-Provider (Fireworks, Together usw.) für mehr Robustheit. Request-Timeouts, Retry-Anzahl und Token-Budgets sind alle per Env-Variable konfigurierbar.</p>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Eine-Box-Infrastruktur</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Eine einzige EC2-Instanz betreibt den Orchestrator und Traefik &mdash; mit automatischem Wildcard-TLS. Das OpenTofu/Terraform-Modul im Repo macht daraus ein wiederverwendbares Deploy für euren eigenen AWS-Account.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="mb-16 py-8 bg-gradient-to-br from-emerald-600 to-teal-700 dark:from-emerald-800 dark:to-teal-900 rounded-lg text-center text-white">
+        <div class="container mx-auto px-6 max-w-xl">
+            <p class="mb-6 text-emerald-100 dark:text-emerald-200">Den vollständigen Katalog sehen &mdash; inklusive kleinerer Features und Implementierungsdetails?</p>
+            <a href="all-features.html" class="inline-block px-6 py-3 font-semibold text-emerald-700 bg-white rounded-md shadow-md hover:bg-emerald-50 transition">Alle Features ansehen &rarr;</a>
+        </div>
+    </section>
+
+</div>
+
+<footer class="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 dark:text-gray-400 text-sm">
+        <p data-controller="copyright">
+            &copy; <span data-copyright-target="year">2026</span> <a href="https://manuel.kiessling.net" class="hover:text-emerald-600 dark:hover:text-emerald-400">Manuel Kie&szlig;ling</a>. Teil von <a href="https://dx-tooling.org" class="hover:text-emerald-600 dark:hover:text-emerald-400">DX&middot;Tooling</a>.
+        </p>
+        <nav class="flex gap-6">
+            <a href="index.html" class="hover:text-emerald-600 dark:hover:text-emerald-400">Startseite</a>
+            <a href="all-features.html" class="hover:text-emerald-600 dark:hover:text-emerald-400">Alle Features</a>
+            <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="hover:text-emerald-600 dark:hover:text-emerald-400">GitHub</a>
+        </nav>
+    </div>
+</footer>
+
+</body>
+
+</html>

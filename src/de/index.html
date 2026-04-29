@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full scroll-smooth">
+
+<head>
+    <title>ProductBuilder &mdash; Ein agentisches Setup, das nicht-technische Teammitglieder von der Idee zum guten PR führt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ProductBuilder ist ein KI-Projektmanager im Agentur-Stil für euren Slack, mit einem Coding-Agenten und einem PR-Preview-System dahinter. Er führt nicht-technische Teammitglieder von der Idee zum guten Pull Request – ohne dass sie GitHub jemals anfassen müssen.">
+
+    <include src="partials/theme-fouc-guard.html"></include>
+
+    <!-- Link to main CSS will be injected here by HtmlWebpackPlugin -->
+</head>
+
+<body class="h-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200 overflow-x-hidden">
+
+<div class="container mx-auto px-4 py-8 max-w-5xl">
+
+    <header class="mb-12 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-xl font-bold text-gray-900 dark:text-white">ProductBuilder</span>
+                <span class="text-xs text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">von <a href="https://dx-tooling.org" class="text-inherit no-underline hover:no-underline">DX&middot;Tooling</a></span>
+            </div>
+            <nav class="hidden sm:flex items-center gap-4 text-sm">
+                <a href="#model" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Warum?</a>
+                <a href="#pillars" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Säulen</a>
+                <a href="#how" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">So funktioniert&rsquo;s</a>
+                <a href="features.html" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Highlights</a>
+                <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">GitHub</a>
+            </nav>
+        </div>
+        <div data-controller="theme">
+            <button
+                data-theme-target="toggleButton"
+                data-action="click->theme#toggle"
+                aria-label="Farbschema umschalten"
+                class="p-2 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white
+                       hover:bg-gray-100 dark:hover:bg-gray-800
+                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 dark:focus:ring-offset-gray-900
+                       cursor-pointer transition-colors duration-200"
+            >
+                <svg data-theme-target="sunIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                </svg>
+                <svg data-theme-target="moonIcon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section with Effects -->
+    <section
+        class="relative mb-16 text-center effects-container"
+        data-controller="hero-effects"
+        style="perspective: 1200px;"
+    >
+        <div
+            class="relative z-10 py-16 px-6 bg-gradient-to-b from-emerald-50 to-teal-100 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-sm
+                   transition-all duration-[2000ms] ease-out
+                   transform rotate-x-[8deg] origin-center
+                   [.effects-active_&]:[transform:rotateX(0deg)]"
+            style="transform-style: preserve-3d;"
+        >
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-4">ProductBuilder</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 dark:text-gray-100 leading-tight transition-all duration-[1800ms] ease-out [transform:translateZ(12px)] [.effects-active_&]:[transform:translateZ(0px)]">
+                Ein agentisches Setup, das<br>nicht-technische Teammitglieder<br>
+                <span class="bg-gradient-to-r from-emerald-600 to-teal-700 dark:from-emerald-500 dark:to-teal-500 bg-clip-text text-transparent">von der Idee zum guten PR führt</span>
+            </h1>
+
+            <p class="text-lg text-gray-700 dark:text-gray-100 mb-10 max-w-2xl mx-auto leading-relaxed transition-all duration-[1600ms] ease-out opacity-85 [.effects-active_&]:opacity-100">
+                Holt euch einen KI-Projektmanager in euren Slack &mdash; wie der eine Ansprechpartner, den ihr von einer externen Entwicklungsagentur bekommen würdet. Er nimmt Anfragen entgegen, klärt den Umfang, briefed den Coding-Agenten, lässt eine Live-Vorschau des Ergebnisses entstehen und holt Feedback ein. All das, ohne dass eure nicht-technischen Teammitglieder je GitHub öffnen müssen &mdash; und ohne dass für jede kleine Änderung Entwickler einspringen müssen.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                    href="#how"
+                    class="inline-block px-8 py-4 font-bold text-lg text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 rounded-md shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 dark:focus:ring-offset-gray-800 transition-all duration-[1400ms] ease-out [transform:translateY(6px)] [.effects-active_&]:[transform:translateY(0px)]"
+                >
+                    So funktioniert&rsquo;s
+                </a>
+                <a
+                    href="https://github.com/dx-tooling/productbuilding-orchestration"
+                    class="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-lg text-emerald-700 dark:text-emerald-300 bg-white dark:bg-gray-800 border border-emerald-200 dark:border-emerald-800 rounded-md shadow-sm hover:bg-emerald-50 dark:hover:bg-gray-700 transition-all"
+                >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                    Auf GitHub ansehen
+                </a>
+            </div>
+            <p class="text-sm text-gray-500 dark:text-gray-200 mt-6 transition-all duration-[1800ms] ease-out opacity-0 [.effects-active_&]:opacity-100">
+                In Slack reden. Eine Live-Preview prüfen. Den Merge übernimmt weiterhin ein Entwickler.
+            </p>
+        </div>
+
+        <!-- Centerpiece: flow diagram (placeholder SVG). A real screenshot collage can replace this later. -->
+        <figure class="mt-12 max-w-3xl mx-auto">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+                    <div class="flex flex-col items-center text-center p-5 rounded-lg bg-rose-50 dark:bg-rose-900/20 border border-rose-100 dark:border-rose-900/40">
+                        <div class="w-12 h-12 bg-rose-500 rounded-lg flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
+                        </div>
+                        <div class="font-semibold text-gray-900 dark:text-white mb-1">Slack</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">&bdquo;@ProductBuilder bitte Dark-Mode-Unterstützung hinzufügen&ldquo;</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-900/40">
+                        <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+                        </div>
+                        <div class="font-semibold text-gray-900 dark:text-white mb-1">Coding-Agent</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Liest das Issue, schreibt den Code, öffnet einen PR.</div>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-5 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-900/40">
+                        <div class="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        </div>
+                        <div class="font-semibold text-gray-900 dark:text-white mb-1">Live-Preview</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">pr-52-preview.example.com &mdash; aktualisiert sich bei jedem Commit.</div>
+                    </div>
+                </div>
+            </div>
+            <figcaption class="text-center text-xs text-gray-500 dark:text-gray-400 mt-3">
+                Anfrage &rarr; Code &rarr; Review. Der PM erzählt jeden Schritt im selben Slack-Thread mit.
+            </figcaption>
+        </figure>
+    </section>
+
+    <!-- Mental Model -->
+    <section class="mb-20" id="model">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 text-gray-900 dark:text-white">Wie eine Agentur engagieren. Ohne die Agentur.</h2>
+            <div class="prose dark:prose-invert max-w-none space-y-5 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                <p>Stellt euch vor, ihr engagiert eine externe Entwicklungsagentur als verlängerte Werkbank für euer internes Software-Team. Diese Agentur würde einen <em>Projektmanager</em> auf euer Konto setzen &mdash; den einen Ansprechpartner, mit dem eure Produktleute reden. Ihr würdet diesen PM in euer eigenes Slack einladen, und er kümmert sich von dort aus um alles Weitere für euch.</p>
+                <p>ProductBuilder <em>ist</em> dieser PM &mdash; plus die ganze Maschinerie dahinter. Nicht-technische Teammitglieder beschreiben in Slack einfach, was sie wollen. Der PM fasst die Aufgabe zusammen, briefed einen Coding-Agenten, der den Code tatsächlich schreibt, deployt eine Live-Preview des Ergebnisses, leitet Feedback hin und her, bis alle zufrieden sind, und übergibt den PR fertig zur Entwickler-Review.</p>
+                <p>Die Low-Level-Details &mdash; GitHub-Issues, Pull Requests, OpenCode-Läufe, Preview-Systeme &mdash; bleiben vollständig gekapselt. Euer Produktteam verlässt Slack nie. Eure Entwickler bekommen gut umrissene PRs statt endlosem Hin und Her zu Spezifikationen. Die Aufgabe des Systems endet bei einem guten PR; das finale Review und der Merge bleiben bei einem menschlichen Entwickler &mdash; da, wo sie hingehören.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Pillars -->
+    <section class="mb-20" id="pillars">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">Drei Säulen, ein Setup</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Der gesamte Ablauf &mdash; Anfrage, Code, Review &mdash; wird gemeinsam ausgeliefert. Jede Säule trägt einen bestimmten Teil der Schleife.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Pillar 1: Slack PM -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 flex flex-col border-t-4 border-rose-500">
+                <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/40 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-rose-600 dark:text-rose-300" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Der Slack-Projektmanager</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-3">Eure nicht-technischen Teammitglieder erwähnen <code class="text-xs bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">@ProductBuilder</code> in Slack. Der PM hört zu, stellt Rückfragen, wenn die Anfrage vage ist, und entscheidet, was zu tun ist &mdash; ein Issue eröffnen, Arbeit delegieren, eine Frage beantworten oder etwas Erledigtes schließen.</p>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Er verfolgt jede Konversation über ihren ganzen Lebenszyklus, sodass Folgefragen am richtigen Workstream landen, statt von vorn zu beginnen.</p>
+            </div>
+            <!-- Pillar 2: Coding Agent -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 flex flex-col border-t-4 border-indigo-500">
+                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/40 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-indigo-600 dark:text-indigo-300" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Der Coding-Agent</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-3">Sobald der PM die Anfrage umrissen hat, übergibt er die Arbeit an den mitgelieferten Coding-Agenten. Der Agent liest das Issue, schreibt den Code und öffnet einen Pull Request gegen euer Ziel-Repository.</p>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-3">Einfache Produkt-Änderungen müssen nie auf dem Schreibtisch eines Entwicklers landen &mdash; die Schleife von Anfrage zu PR läuft von selbst, während der PM den Fortschritt in Slack mit erzählt.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-auto"><em>Powered by OpenCode, aufgerufen über einen CI-Workflow, den das Setup neben dem Orchestrator installiert.</em></p>
+            </div>
+            <!-- Pillar 3: PR Previews -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 flex flex-col border-t-4 border-amber-500">
+                <div class="w-12 h-12 bg-amber-100 dark:bg-amber-900/40 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-amber-600 dark:text-amber-300" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">PR-Previews</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-3">Jeder Pull Request, den der Agent (oder ein Entwickler) öffnet, bekommt eine Live-Preview unter einer stabilen URL &mdash; automatisch hinter Traefik deployt und bei jedem Commit aktualisiert.</p>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Nicht-technische Reviewer klicken einen Link, probieren die Änderung wirklich aus und geben Feedback im selben Slack-Thread. Die Preview baut sich selbst ab, sobald der PR geschlossen wird.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="mb-20" id="how">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">So funktioniert&rsquo;s</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Eine Anfrage, lückenlos verfolgt.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex gap-5">
+                <div class="shrink-0">
+                    <div class="w-12 h-12 bg-rose-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-md">1</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">In Slack fragen</h3>
+                        <span class="text-xs uppercase tracking-wider text-rose-600 dark:text-rose-400 font-semibold">Slack-PM</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Ein Produkt-Teammitglied schreibt <code class="text-xs bg-gray-100 dark:bg-gray-700 px-1.5 py-0.5 rounded">@ProductBuilder bitte Dark-Mode-Unterstützung hinzufügen</code>. Der PM stellt fehlende Rückfragen &mdash; ganze App oder nur ein Bereich? OS-Präferenz oder manueller Toggle? &mdash; und legt ein gut umrissenes GitHub-Issue an, in dem der geklärte Kontext schon eingearbeitet ist.</p>
+                </div>
+            </div>
+            <div class="flex gap-5">
+                <div class="shrink-0">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-md">2</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Der Coding-Agent übernimmt</h3>
+                        <span class="text-xs uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-semibold">Coding-Agent</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Der PM delegiert die Arbeit. Der Coding-Agent liest das Issue, schreibt den Code und öffnet einen Pull Request. Das Teammitglied verlässt Slack nicht &mdash; der PM erzählt den Fortschritt mit, während er passiert.</p>
+                </div>
+            </div>
+            <div class="flex gap-5">
+                <div class="shrink-0">
+                    <div class="w-12 h-12 bg-amber-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-md">3</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Eine Live-Preview erscheint</h3>
+                        <span class="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 font-semibold">PR-Preview</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Der PR triggert ein automatisches Deploy hinter Traefik. Innerhalb weniger Minuten wirft der PM die Preview-URL in den Slack-Thread &mdash; <em>&bdquo;Hier ausprobieren: pr-52-preview.example.com.&ldquo;</em> Jeder neue Commit aktualisiert dieselbe URL.</p>
+                </div>
+            </div>
+            <div class="flex gap-5">
+                <div class="shrink-0">
+                    <div class="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center text-xl font-bold shadow-md">4</div>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Reviewen, iterieren, übergeben</h3>
+                        <span class="text-xs uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">Zurück zum PM</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Das Teammitglied gibt in Slack Feedback. Der PM gibt die Änderungen an den Coding-Agenten weiter, der pusht Updates; die Preview aktualisiert sich jedes Mal. Sobald das Teammitglied zufrieden ist, wird der PR als bereit markiert &mdash; das finale Review und den Merge übernimmt weiterhin ein Entwickler.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Snapshot -->
+    <section class="mb-20" id="architecture">
+        <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-8 md:p-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">Unter der Haube</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Ein einziger Go-Orchestrator spricht mit Slack, GitHub und Claude &mdash; und betreibt die Previews selbst.</p>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 mb-8">
+                <span class="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg shadow-sm font-medium">Slack</span>
+                <span class="text-gray-400">&harr;</span>
+                <span class="px-4 py-2 bg-emerald-600 text-white rounded-lg shadow-md font-semibold">Orchestrator (Go)</span>
+                <span class="text-gray-400">&harr;</span>
+                <span class="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg shadow-sm font-medium">GitHub</span>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4 mb-8 text-sm">
+                <span class="px-3 py-1.5 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-600">Claude-LLM (Router + Spezialisten)</span>
+                <span class="px-3 py-1.5 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-600">OpenCode via CI</span>
+                <span class="px-3 py-1.5 bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-600">Traefik + Docker Compose</span>
+            </div>
+            <div class="text-center text-sm text-gray-500 dark:text-gray-400">
+                <span class="font-medium">Go 1.26</span> <span class="mx-2">&middot;</span>
+                <span class="font-medium">SQLite</span> <span class="mx-2">&middot;</span>
+                <span class="font-medium">Anthropic + OpenAI-kompatibler Fallback</span> <span class="mx-2">&middot;</span>
+                <span class="font-medium">Per OpenTofu auf einer einzigen EC2 deploybar</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Updates (removed at build time when src/blog/ has no posts) -->
+    <section class="mb-20" id="updates" data-controller="expandable-list" data-hide-if-no-posts>
+        <h2 class="text-2xl font-bold text-center mb-8 text-gray-800 dark:text-gray-200">Neueste Updates</h2>
+        <div id="blog-posts-compact-container" class="space-y-3 max-w-2xl mx-auto" data-expandable-list-target="list"></div>
+        <div class="mt-6 text-center hidden" data-expandable-list-target="toggleContainer">
+            <button
+                type="button"
+                data-action="click->expandable-list#toggle"
+                data-expandable-list-target="toggleButton"
+                class="inline-flex items-center gap-1 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
+            >
+                <span data-expandable-list-target="toggleText">Alle Updates anzeigen</span>
+                <svg data-expandable-list-target="chevron" class="w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mb-16 py-12 bg-gradient-to-br from-emerald-600 to-teal-700 dark:from-emerald-800 dark:to-teal-900 rounded-lg text-center text-white" id="cta">
+        <div class="container mx-auto px-6 max-w-xl">
+            <h2 class="text-3xl font-bold mb-4">Gebt eurem Produktteam einen direkten Draht zu fertigen PRs</h2>
+            <p class="mb-8 text-emerald-100 dark:text-emerald-200">ProductBuilder ist Open Source. Einmal auf einer einzigen EC2 deployen, auf euren Slack-Workspace und eure Ziel-Repos zeigen lassen &mdash; den Rest übernimmt der PM-Agent.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="px-6 py-3 font-semibold text-emerald-700 bg-white rounded-md shadow-md hover:bg-emerald-50 transition duration-150 ease-in-out">
+                    Auf GitHub ansehen
+                </a>
+                <a href="https://github.com/dx-tooling/productbuilding-orchestration#readme" class="px-6 py-3 font-semibold text-white bg-emerald-800/40 border border-white/30 rounded-md shadow-md hover:bg-emerald-800/60 transition duration-150 ease-in-out">
+                    README lesen
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div> <!-- End Container -->
+
+<!-- Footer -->
+<footer class="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 dark:text-gray-400 text-sm">
+        <p data-controller="copyright">
+            &copy; <span data-copyright-target="year">2026</span> <a href="https://manuel.kiessling.net" class="hover:text-emerald-600 dark:hover:text-emerald-400">Manuel Kie&szlig;ling</a>. Teil von <a href="https://dx-tooling.org" class="hover:text-emerald-600 dark:hover:text-emerald-400">DX&middot;Tooling</a>.
+        </p>
+        <nav class="flex gap-6">
+            <a href="features.html" class="hover:text-emerald-600 dark:hover:text-emerald-400">Highlights</a>
+            <a href="all-features.html" class="hover:text-emerald-600 dark:hover:text-emerald-400">Alle Features</a>
+            <a href="https://github.com/dx-tooling/productbuilding-orchestration" class="hover:text-emerald-600 dark:hover:text-emerald-400">GitHub</a>
+        </nav>
+    </div>
+</footer>
+
+</body>
+
+</html>

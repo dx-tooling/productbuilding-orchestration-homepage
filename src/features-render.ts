@@ -12,13 +12,22 @@ const DATE_BADGE_CLASS = "text-[10px] text-gray-300 dark:text-gray-600 font-mono
 const COMMIT_LINK_CLASS =
     "absolute bottom-2 right-3 text-[10px] text-gray-300 dark:text-gray-600 hover:text-blue-400 font-mono";
 
+function isGermanLocale(): boolean {
+    return (document.documentElement.lang || "").toLowerCase().startsWith("de");
+}
+
 function formatSinceDate(isoDate: string): string {
+    const locale = isGermanLocale() ? "de-DE" : "en-US";
     const d = new Date(isoDate);
-    return d.toLocaleDateString("en-US", {
+    return d.toLocaleDateString(locale, {
         month: "short",
         day: "numeric",
         year: "numeric",
     });
+}
+
+function sincePrefix(): string {
+    return isGermanLocale() ? "seit" : "since";
 }
 
 export interface DerivedFeature {
@@ -137,7 +146,7 @@ function buildSection(data: FeaturesData, category: Category, features: DerivedF
         titleRow.appendChild(h3);
         const since = document.createElement("span");
         since.className = DATE_BADGE_CLASS;
-        since.textContent = `since ${formatSinceDate(f.date)}`;
+        since.textContent = `${sincePrefix()} ${formatSinceDate(f.date)}`;
         titleRow.appendChild(since);
         card.appendChild(titleRow);
 
