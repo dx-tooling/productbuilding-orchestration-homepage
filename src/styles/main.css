@@ -60,3 +60,58 @@
 .slack-demo-caret {
     animation: slack-demo-caret 1s step-end infinite;
 }
+
+/* Slack-demo: simplified preview page rendered inside the browser-window
+   overlay. Two-tone theming via [data-theme="light|dark"] so the demo
+   can flip it from the controller without re-rendering. */
+.preview-page {
+    transition:
+        background-color 300ms ease,
+        color 300ms ease;
+}
+.preview-page[data-theme="light"] {
+    background: #ffffff;
+    color: rgb(17, 24, 39);
+}
+.preview-page[data-theme="dark"] {
+    background: rgb(17, 24, 39);
+    color: rgb(243, 244, 246);
+}
+.preview-page .preview-card {
+    transition:
+        background-color 300ms ease,
+        border-color 300ms ease;
+    border: 1px solid transparent;
+}
+.preview-page[data-theme="light"] .preview-card {
+    background: rgb(249, 250, 251);
+    border-color: rgb(229, 231, 235);
+}
+.preview-page[data-theme="dark"] .preview-card {
+    background: rgb(31, 41, 55);
+    border-color: rgb(75, 85, 99);
+}
+
+/* The theme-toggle CTA — slightly emphasised so the cursor click target is obvious. */
+.preview-page .preview-toggle-btn {
+    transition:
+        background-color 300ms ease,
+        color 300ms ease,
+        box-shadow 300ms ease;
+}
+.preview-page[data-theme="light"] .preview-toggle-btn {
+    background: rgb(243, 244, 246);
+    color: rgb(75, 85, 99);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.18);
+}
+.preview-page[data-theme="dark"] .preview-toggle-btn {
+    background: rgb(55, 65, 81);
+    color: rgb(243, 244, 246);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.32);
+}
+.preview-page[data-theme="light"] .preview-icon-sun {
+    display: none;
+}
+.preview-page[data-theme="dark"] .preview-icon-moon {
+    display: none;
+}

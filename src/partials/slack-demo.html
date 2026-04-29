@@ -7,7 +7,7 @@
     </div>
 
     <div data-controller="slack-demo"
-         class="slack-demo max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 bg-white dark:bg-[#1a1d21]">
+         class="slack-demo relative max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 bg-white dark:bg-[#1a1d21]">
 
         <!-- Slack-style channel header -->
         <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1a1d21]">
@@ -196,11 +196,12 @@
                 </div>
             </div>
 
-            <!-- 9. Bot: preview live (with link unfurl card) -->
+            <!-- 9. Bot: preview live (with link unfurl card) — triggers the preview demo -->
             <div data-slack-demo-target="message"
                  data-from="bot"
                  data-typing-ms="1800"
-                 data-pause-ms="2200"
+                 data-pause-ms="600"
+                 data-trigger-preview="true"
                  class="hidden opacity-0 translate-y-2 transition-all duration-300 ease-out flex gap-3 px-4 py-2 hover:bg-gray-50 dark:hover:bg-white/5">
                 <div class="shrink-0 w-9 h-9 rounded bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-xs">PB</div>
                 <div class="flex-1 min-w-0">
@@ -212,7 +213,8 @@
                     <div class="text-gray-800 dark:text-gray-200">
                         <p class="mb-2">Preview is live — give it a spin:</p>
                         <!-- Slack-style link unfurl card -->
-                        <div class="border-l-4 border-emerald-500 pl-3 py-2 bg-gray-50 dark:bg-white/5 rounded-r max-w-md">
+                        <div data-slack-demo-target="previewLink"
+                             class="border-l-4 border-emerald-500 pl-3 py-2 bg-gray-50 dark:bg-white/5 rounded-r max-w-md cursor-pointer transition-shadow">
                             <div class="text-xs text-gray-500 dark:text-gray-400 mb-0.5">Acme Directory · Preview</div>
                             <div class="font-semibold text-blue-600 dark:text-blue-400 mb-1">
                                 <a href="#" class="hover:underline">acme-directory-pr-4.preview.example.com</a>
@@ -264,6 +266,79 @@
                     <span class="italic" data-slack-demo-target="typingLabel">ProductBuilder is typing…</span>
                 </div>
             </div>
+        </div>
+
+        <!-- Browser-window overlay shown after the "preview live" message -->
+        <div data-slack-demo-target="browserPanel"
+             aria-hidden="true"
+             class="absolute hidden opacity-0 scale-95 transition-[opacity,transform] duration-300 ease-out pointer-events-none z-20"
+             style="top: 0; left: 0; width: 0; height: 0;">
+            <div class="rounded-lg shadow-2xl ring-1 ring-black/20 overflow-hidden bg-white h-full flex flex-col">
+                <!-- Browser chrome -->
+                <div class="flex items-center gap-1.5 px-3 py-2 bg-gray-100 border-b border-gray-200 shrink-0">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                    <div class="flex-1 mx-2 px-2 py-0.5 rounded text-[11px] text-gray-600 bg-white border border-gray-300 truncate">
+                        🔒 acme-directory-pr-4.preview.example.com
+                    </div>
+                </div>
+                <!-- Page content (themed via data-theme attribute) -->
+                <div data-slack-demo-target="previewPage"
+                     data-theme="light"
+                     class="preview-page flex-1 overflow-hidden p-4 sm:p-5">
+                    <!-- Header with brand + theme toggle -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-base font-bold tracking-tight">Acme Directory</div>
+                        <button data-slack-demo-target="previewToggle"
+                                type="button"
+                                aria-label="Toggle theme"
+                                class="preview-toggle-btn relative inline-flex items-center justify-center w-9 h-9 rounded-full">
+                            <svg class="preview-icon-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+                            </svg>
+                            <svg class="preview-icon-sun w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="4"/>
+                                <path stroke-linecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Hero -->
+                    <div class="mb-4">
+                        <h2 class="text-lg font-bold mb-1">Find trusted local services</h2>
+                        <p class="text-xs opacity-70">Verified providers across 17 cities, ranked by recent reviews.</p>
+                    </div>
+                    <!-- Cards -->
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="preview-card p-2.5 rounded">
+                            <div class="text-[9px] uppercase opacity-60 mb-1">Consulting</div>
+                            <div class="text-xs font-semibold mb-0.5">Hartwell &amp; Co</div>
+                            <div class="text-[10px] opacity-60">Boston, MA</div>
+                        </div>
+                        <div class="preview-card p-2.5 rounded">
+                            <div class="text-[9px] uppercase opacity-60 mb-1">Design</div>
+                            <div class="text-xs font-semibold mb-0.5">Brightline Studio</div>
+                            <div class="text-[10px] opacity-60">Portland, OR</div>
+                        </div>
+                        <div class="preview-card p-2.5 rounded">
+                            <div class="text-[9px] uppercase opacity-60 mb-1">Development</div>
+                            <div class="text-xs font-semibold mb-0.5">Northshore Labs</div>
+                            <div class="text-[10px] opacity-60">Seattle, WA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oversized cursor used for the preview interaction -->
+        <div data-slack-demo-target="cursor"
+             aria-hidden="true"
+             class="absolute hidden pointer-events-none z-30"
+             style="top: 0; left: 0; width: 28px; height: 28px; transform: translate(0, 0); transition: transform 700ms cubic-bezier(0.4, 0, 0.2, 1);">
+            <svg viewBox="0 0 24 24" class="w-full h-full transition-transform duration-100 ease-out drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" data-slack-demo-target="cursorSvg">
+                <path d="M 5 2 L 5 21 L 9.5 17 L 11.5 22 L 14.5 20.5 L 12.5 15.5 L 18.5 15.5 Z"
+                      fill="white" stroke="black" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
         </div>
 
         <!-- Composer (decorative — animated by the controller) -->

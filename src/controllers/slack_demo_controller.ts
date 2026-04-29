@@ -34,6 +34,12 @@ export default class extends Controller {
         "composerPlaceholder",
         "composerTyped",
         "composerCursor",
+        "cursor",
+        "cursorSvg",
+        "browserPanel",
+        "previewLink",
+        "previewPage",
+        "previewToggle",
     ];
 
     declare readonly listTarget: HTMLElement;
@@ -52,6 +58,18 @@ export default class extends Controller {
     declare readonly hasComposerTypedTarget: boolean;
     declare readonly composerCursorTarget: HTMLElement;
     declare readonly hasComposerCursorTarget: boolean;
+    declare readonly cursorTarget: HTMLElement;
+    declare readonly hasCursorTarget: boolean;
+    declare readonly cursorSvgTarget: SVGElement;
+    declare readonly hasCursorSvgTarget: boolean;
+    declare readonly browserPanelTarget: HTMLElement;
+    declare readonly hasBrowserPanelTarget: boolean;
+    declare readonly previewLinkTarget: HTMLElement;
+    declare readonly hasPreviewLinkTarget: boolean;
+    declare readonly previewPageTarget: HTMLElement;
+    declare readonly hasPreviewPageTarget: boolean;
+    declare readonly previewToggleTarget: HTMLElement;
+    declare readonly hasPreviewToggleTarget: boolean;
 
     private observer: IntersectionObserver | null = null;
     private played = false;
@@ -137,10 +155,146 @@ export default class extends Controller {
             this.reveal(message);
             this.scrollToBottom();
             await this.sleep(pauseMs);
+
+            if (message.dataset.triggerPreview === "true") {
+                if (this.cancelled) return;
+                await this.playPreviewSequence();
+                if (this.cancelled) return;
+            }
         }
 
         if (this.hasReplayTarget) {
             this.replayTarget.classList.remove("hidden");
+        }
+    }
+
+    /**
+     * The "grand finale": after the preview-link message is revealed, an
+     * oversized cursor moves to the unfurl card, "clicks" it, a browser-
+     * window overlay slides in over the messages list, and the cursor
+     * clicks the theme toggle a few times to demonstrate light/dark.
+     */
+    private async playPreviewSequence() {
+        if (
+            !this.hasCursorTarget ||
+            !this.hasBrowserPanelTarget ||
+            !this.hasPreviewLinkTarget ||
+            !this.hasPreviewPageTarget ||
+            !this.hasPreviewToggleTarget
+        ) {
+            return;
+        }
+
+        // 1. Show the cursor near the preview-link card (no animation in — it
+        //    just appears, as if the user moved their hand to the trackpad).
+        this.previewPageTarget.dataset.theme = "light";
+        this.positionCursorOver(this.previewLinkTarget, { instant: true });
+        this.cursorTarget.classList.remove("hidden");
+        await this.sleep(450);
+        if (this.cancelled) return;
+
+        // 2. Click the preview link
+        await this.simulateClick();
+        if (this.cancelled) return;
+
+        // 3. Slide the browser panel in over the messages list
+        this.positionBrowserPanel();
+        this.browserPanelTarget.classList.remove("hidden");
+        // double rAF so the transition picks up the change reliably
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                this.browserPanelTarget.classList.remove("opacity-0", "scale-95");
+            });
+        });
+        await this.sleep(400);
+        if (this.cancelled) return;
+
+        // 4. Move the cursor to the toggle button and click 3 times,
+        //    flipping the theme each click. End state: dark.
+        for (let i = 0; i < 3; i++) {
+            this.positionCursorOver(this.previewToggleTarget);
+            // wait for the smooth-move transition (700 ms) plus a beat to read
+            await this.sleep(900);
+            if (this.cancelled) return;
+
+            await this.simulateClick();
+            if (this.cancelled) return;
+            this.togglePreviewTheme();
+
+            await this.sleep(i === 2 ? 700 : 600);
+            if (this.cancelled) return;
+        }
+
+        // 5. Hide panel + cursor
+        this.browserPanelTarget.classList.add("opacity-0", "scale-95");
+        this.cursorTarget.classList.add("hidden");
+        await this.sleep(320);
+        this.browserPanelTarget.classList.add("hidden");
+    }
+
+    private positionCursorOver(el: HTMLElement, opts: { instant?: boolean } = {}) {
+        if (!this.hasCursorTarget) return;
+        const containerRect = this.element.getBoundingClientRect();
+        const targetRect = el.getBoundingClientRect();
+        // Land the cursor's tip near the centre of the target. The arrow's
+        // hot-spot in the SVG is roughly at (5, 2), so subtract a small offset.
+        const x = targetRect.left - containerRect.left + targetRect.width / 2 - 6;
+        const y = targetRect.top - containerRect.top + targetRect.height / 2 - 4;
+
+        if (opts.instant) {
+            // Suspend the transition for an instant placement
+            const previous = this.cursorTarget.style.transition;
+            this.cursorTarget.style.transition = "none";
+            this.cursorTarget.style.transform = `translate(${x}px, ${y}px)`;
+            // force reflow so the change applies before transitions are restored
+            void this.cursorTarget.offsetWidth;
+            this.cursorTarget.style.transition = previous;
+        } else {
+            this.cursorTarget.style.transform = `translate(${x}px, ${y}px)`;
+        }
+    }
+
+    private positionBrowserPanel() {
+        if (!this.hasBrowserPanelTarget) return;
+        const containerRect = this.element.getBoundingClientRect();
+        const listRect = this.listTarget.getBoundingClientRect();
+        // Inset by ~7.5% on each side → panel covers ~85% × 85% ≈ 72% of the list area.
+        const insetH = Math.round(listRect.width * 0.075);
+        const insetV = Math.round(listRect.height * 0.075);
+        this.browserPanelTarget.style.top = `${listRect.top - containerRect.top + insetV}px`;
+        this.browserPanelTarget.style.left = `${listRect.left - containerRect.left + insetH}px`;
+        this.browserPanelTarget.style.width = `${listRect.width - insetH * 2}px`;
+        this.browserPanelTarget.style.height = `${listRect.height - insetV * 2}px`;
+    }
+
+    private async simulateClick() {
+        if (!this.hasCursorSvgTarget) {
+            await this.sleep(180);
+            return;
+        }
+        const svg = this.cursorSvgTarget as unknown as HTMLElement;
+        svg.style.transform = "scale(0.85)";
+        await this.sleep(110);
+        if (this.cancelled) return;
+        svg.style.transform = "scale(1)";
+        await this.sleep(140);
+    }
+
+    private togglePreviewTheme() {
+        if (!this.hasPreviewPageTarget) return;
+        const current = this.previewPageTarget.dataset.theme ?? "light";
+        this.previewPageTarget.dataset.theme = current === "light" ? "dark" : "light";
+    }
+
+    private resetPreviewSequence() {
+        if (this.hasCursorTarget) {
+            this.cursorTarget.classList.add("hidden");
+        }
+        if (this.hasBrowserPanelTarget) {
+            this.browserPanelTarget.classList.add("hidden", "opacity-0", "scale-95");
+        }
+        if (this.hasPreviewPageTarget) {
+            this.previewPageTarget.dataset.theme = "light";
         }
     }
 
@@ -196,6 +350,7 @@ export default class extends Controller {
         });
         this.hideTyping();
         this.deactivateComposer();
+        this.resetPreviewSequence();
     }
 
     private resetMessages() {
@@ -204,6 +359,7 @@ export default class extends Controller {
         });
         this.hideTyping();
         this.deactivateComposer();
+        this.resetPreviewSequence();
         this.listTarget.scrollTop = 0;
     }
 
