@@ -75,10 +75,10 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                    href="#how"
+                    href="#demo"
                     class="inline-block px-8 py-4 font-bold text-lg text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 rounded-md shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 dark:focus:ring-offset-gray-800 transition-all duration-[1400ms] ease-out [transform:translateY(6px)] [.effects-active_&]:[transform:translateY(0px)]"
                 >
-                    See how it works
+                    See it in action
                 </a>
                 <a
                     href="https://github.com/dx-tooling/productbuilding-orchestration"
@@ -95,38 +95,9 @@
             </p>
         </div>
 
-        <!-- Centerpiece: flow diagram (placeholder SVG). A real screenshot collage can replace this later. -->
-        <figure class="mt-12 max-w-3xl mx-auto">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
-                    <div class="flex flex-col items-center text-center p-5 rounded-lg bg-rose-50 dark:bg-rose-900/20 border border-rose-100 dark:border-rose-900/40">
-                        <div class="w-12 h-12 bg-rose-500 rounded-lg flex items-center justify-center mb-3">
-                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
-                        </div>
-                        <div class="font-semibold text-gray-900 dark:text-white mb-1">Slack</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">&ldquo;@ProductBuilder add dark mode support&rdquo;</div>
-                    </div>
-                    <div class="flex flex-col items-center text-center p-5 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-900/40">
-                        <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-3">
-                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
-                        </div>
-                        <div class="font-semibold text-gray-900 dark:text-white mb-1">Coding agent</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">Reads the issue, writes the code, opens a PR.</div>
-                    </div>
-                    <div class="flex flex-col items-center text-center p-5 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-900/40">
-                        <div class="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center mb-3">
-                            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                        </div>
-                        <div class="font-semibold text-gray-900 dark:text-white mb-1">Live preview</div>
-                        <div class="text-sm text-gray-600 dark:text-gray-400">pr-52-preview.example.com &mdash; refreshes on every commit.</div>
-                    </div>
-                </div>
-            </div>
-            <figcaption class="text-center text-xs text-gray-500 dark:text-gray-400 mt-3">
-                Request &rarr; code &rarr; review. The PM narrates each step back in the same Slack thread.
-            </figcaption>
-        </figure>
     </section>
+
+    <include src="partials/slack-demo.html"></include>
 
     <!-- Mental Model -->
     <section class="mb-20" id="model">
@@ -242,8 +213,6 @@
             </div>
         </div>
     </section>
-
-    <include src="partials/slack-demo.html"></include>
 
     <!-- Architecture Snapshot -->
     <section class="mb-20" id="architecture">
