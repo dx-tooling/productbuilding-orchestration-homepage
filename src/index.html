@@ -70,6 +70,10 @@
                 <span class="bg-gradient-to-r from-emerald-600 to-teal-700 dark:from-emerald-500 dark:to-teal-500 bg-clip-text text-transparent">from idea to a good PR</span>
             </h1>
 
+            <div class="mb-10">
+                <include src="partials/slack-demo.html"></include>
+            </div>
+
             <p class="text-lg text-gray-700 dark:text-gray-100 mb-10 max-w-2xl mx-auto leading-relaxed transition-all duration-[1600ms] ease-out opacity-85 [.effects-active_&]:opacity-100">
                 Drop an AI project manager into your Slack &mdash; like the single point of contact you&rsquo;d get from an external dev agency. They hear the request, clarify the scope, brief the coding agent, spin up a live preview of the result, and bring feedback back. All without your non-technical teammates ever opening GitHub, and without pulling a developer in for every small change.
             </p>
@@ -97,7 +101,35 @@
 
     </section>
 
-    <include src="partials/slack-demo.html"></include>
+    <!-- Demo video -->
+    <section class="mb-20" id="demo">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">See it in action</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                A short walkthrough of a non-tech teammate adding a light/dark theme switch to a directory site &mdash; from the Slack request to a working preview.
+            </p>
+        </div>
+        <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-700 bg-black">
+            <video
+                data-controller="video-player"
+                data-video-player-rate-value="1.5"
+                class="block w-full h-auto"
+                controls
+                preload="metadata"
+                playsinline
+                width="2560"
+                height="1440"
+                poster="https://dx-tooling.org/productbuilder-assets/2026-04-30-dx-tooling-productbuilder-demo-directory-theme-switcher-1280x720.jpg"
+            >
+                <source src="https://dx-tooling.org/productbuilder-assets/2026-04-30-dx-tooling-productbuilder-demo-directory-theme-switcher.mp4" type="video/mp4">
+                <p class="text-white p-4">
+                    Your browser doesn&rsquo;t support embedded videos.
+                    <a href="https://dx-tooling.org/productbuilder-assets/2026-04-30-dx-tooling-productbuilder-demo-directory-theme-switcher.mp4" class="underline">Download the video</a>
+                    to watch it offline.
+                </p>
+            </video>
+        </div>
+    </section>
 
     <!-- Mental Model -->
     <section class="mb-20" id="model">
